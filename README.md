@@ -2,20 +2,19 @@
 بِسْــــــــــــــمِ اللَّهِ الرَّحْمَنِ الرَّحِيم 
 </p>
 
-### Selamat Datang di Repo Final Project Pemrograman Web
-### UPN "Veteran" Jawa Timur
+## Selamat Datang di Repo Final Project Pemrograman Web
+## UPN "Veteran" Jawa Timur
 
 ![Logo Project](/images/logo.png)
-<img align="center" width="250" src="/images/logo.png">
 
-Menceritakan tentang sebuah perpustakaan yang bercita-cita besar.  
+Menceritakan tentang sebuah perpustakaan yang memiliki cita-cita besar.  
 Seperti kata Pramoedya Ananta Toer:  
-> Orang boleh pandai setinggi langit
-> Tapi selama ia tidak menulis
-> Ia akan hilang di dalam Masyarakat dan Sejarah.
+> Orang boleh pandai setinggi langit  
+> Tapi selama ia tidak menulis  
+> Ia akan hilang di dalam Masyarakat dan Sejarah.  
 > __Menulis adalah bekerja untuk keabadian__
 ---
-##### Project ini masih dalam tahap development :-)
+#### Project ini masih dalam tahap development :-)
 ---
 
 <p align="center"> Profile Tim Kami: Kelompok 10 </p>
