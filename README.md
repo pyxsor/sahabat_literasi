@@ -6,6 +6,7 @@
 ### UPN "Veteran" Jawa Timur
 
 ![Logo Project](/images/logo.png)
+<img align="center" width="250" src="/images/logo.png">
 
 Menceritakan tentang sebuah perpustakaan yang bercita-cita besar.  
 Seperti kata Pramoedya Ananta Toer:  
