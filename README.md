@@ -2,12 +2,10 @@
 بِسْــــــــــــــمِ اللَّهِ الرَّحْمَنِ الرَّحِيم 
 </p>
 
-# Selamat Datang di Repo Final Project Pemrograman Web
-# UPN "Veteran" Jawa Timur
+### Selamat Datang di Repo Final Project Pemrograman Web
+### UPN "Veteran" Jawa Timur
 
-<p align="center">
 ![Logo Project](/images/logo.png)
-</p>
 
 Menceritakan tentang sebuah perpustakaan yang bercita-cita besar.  
 Seperti kata Pramoedya Ananta Toer:  
@@ -16,10 +14,7 @@ Seperti kata Pramoedya Ananta Toer:
 > Ia akan hilang di dalam Masyarakat dan Sejarah.
 > __Menulis adalah bekerja untuk keabadian__
 ---
-<p align="center">
-
-### Project ini masih dalam tahap development :-)
-</p>
+##### Project ini masih dalam tahap development :-)
 ---
 
 <p align="center"> Profile Tim Kami: Kelompok 10 </p>
@@ -40,6 +35,7 @@ Status TO-DO List
 - [ ] Build Proper Index
 - [x] Build Login System
 - [ ] Build CRUD System
+- [ ] More is Coming!
 - [x] Rebahan!
 
 <p align="center"> Tuntaskan dan Semangat Bagi Kita Semua! </p>
