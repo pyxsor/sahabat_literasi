@@ -60,9 +60,6 @@ if (isset($_POST["login"])) {
 
 <body>
    <h1>HALAMAN LOGIN</h1>
-   <?php if (isset($error)) : ?>
-      <p style="color: red; font-style: italic">username / password salah</p>
-   <?php endif; ?>
 
    <div id="form">
       <form action="" method="POST">
@@ -82,6 +79,10 @@ if (isset($_POST["login"])) {
             <button type="submit" name="login">LOGIN</button>
          </p>
       </form>
+      <?php if (isset($error)) : ?>
+         <p style="color: red; font-style: italic">username / password salah</p>
+      <?php endif; ?>
+
    </div>
 </body>
 
