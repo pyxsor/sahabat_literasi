@@ -107,31 +107,6 @@ if (isset($_POST["login"])) {
             </div>
          </div>
       </div>
-
-
-
-      <!--  
-   <div id="form">
-      <form action="" method="POST">
-         <p>
-            <label>Username : </label>
-            <input type="text" id="username" name="username">
-         </p>
-         <p>
-            <label>Password : </label>
-            <input type="password" id="password" name="password">
-         </p>
-         <p>
-            <input type="checkbox" name="remember" id="remember">
-            <label for="remember">Ingat aku</label>
-         </p>
-         <p>
-            <button type="submit" name="login">LOGIN</button>
-         </p>
-      </form>
-   </div>
--->
-
 </body>
 
 </html>
