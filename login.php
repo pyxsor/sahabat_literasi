@@ -16,7 +16,7 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
 }
 
 if (isset($_SESSION["login"])) {
-   header("Location: index.php");
+   header("Location: dashboard.php");
    exit;
 }
 
@@ -40,7 +40,7 @@ if (isset($_POST["login"])) {
             setcookie('key', hash('sha256', $row['username']), time() + 60);
          }
 
-         header("Location: index.php");
+         header("Location: dashboard.php");
          exit;
       }
    }
@@ -69,33 +69,7 @@ if (isset($_POST["login"])) {
 </head>
 
 <body>
-<<<<<<< HEAD
-   <h1>HALAMAN LOGIN</h1>
 
-   <div id="form">
-      <form action="" method="POST">
-         <p>
-            <label>Username : </label>
-            <input type="text" id="username" name="username">
-         </p>
-         <p>
-            <label>Password : </label>
-            <input type="password" id="password" name="password">
-         </p>
-         <p>
-            <input type="checkbox" name="remember" id="remember">
-            <label for="remember">Ingat aku</label>
-         </p>
-         <p>
-            <button type="submit" name="login">LOGIN</button>
-         </p>
-      </form>
-      <?php if (isset($error)) : ?>
-         <p style="color: red; font-style: italic">username / password salah</p>
-      <?php endif; ?>
-
-   </div>
-=======
    <!-- jQuery + Bootstraps Bundle -->
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -134,7 +108,7 @@ if (isset($_POST["login"])) {
             </div>
          </div>
       </div>
->>>>>>> 0ef41b20d5e5d82ba7211c192579d2d4e9f5bf4b
+      >>>>>>> 0ef41b20d5e5d82ba7211c192579d2d4e9f5bf4b
 </body>
 
 </html>

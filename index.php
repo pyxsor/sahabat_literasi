@@ -1,13 +1,6 @@
 <?php
 session_start();
-
 require "function.php";
-
-if (!isset($_SESSION["login"])) {
-   header("Location: login.php");
-   exit;
-}
-
 
 ?>
 
@@ -22,7 +15,11 @@ if (!isset($_SESSION["login"])) {
 
 <body>
    <h1>Sahabat Literasi</h1>
-   <a href="logout.php">Logout</a>
+   <p>koktak 3</p>
+   <a href="login.php">login</a>
+   <a href="login.php">lokasi kamu</a>
+   <a href="login.php">rak kita</a>
+
 
 </body>
 

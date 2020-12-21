@@ -50,3 +50,86 @@ function registrasi($data)
    echo mysqli_error($conn);
    return mysqli_affected_rows($conn);
 }
+
+function input($data)
+{
+   global $conn;
+   $id = htmlspecialchars($data["id"]);
+   $judul = htmlspecialchars($data["judul"]);
+   $penulis = htmlspecialchars($data["penulis"]);
+   $tahun = htmlspecialchars($data["tahun"]);
+   $penerbit = htmlspecialchars($data["penerbit"]);
+   $lokasi = htmlspecialchars($data["lokasi"]);
+   $status = htmlspecialchars($data["status"]);
+   $cover = upload();
+
+   if (!$cover) {
+      return false;
+   }
+
+   $query = "INSERT INTO buku VALUES ('$id','$judul','$penulis','$tahun','$penerbit','$lokasi','$status','$cover');";
+
+   mysqli_query($conn, $query);
+
+   return mysqli_affected_rows($conn);
+}
+
+function upload()
+{
+   $namaFile = $_FILES['cover']['name'];
+   $ukuranFile = $_FILES['cover']['size'];
+   $error = $_FILES['cover']['error'];
+   $tmpName = $_FILES['cover']['tmp_name'];
+
+   var_dump($_FILES);
+
+   if ($error === 4) {
+      echo
+         "<script>
+			alert('Pilih gambar terlebih dahulu');
+		</script>";
+      return false;
+   }
+
+   $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+   $ekstensiGambar = explode('.', $namaFile);
+   $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+   echo $namaFile . $ekstensiGambar;
+   if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+      echo
+         "<script>
+			alert('Yang diupload harus gambar');
+		</script>";
+      return false;
+   }
+
+   if ($ukuranFile > 1000000) {
+      echo
+         "<script>
+			alert('File gambar minimal berukuran 1024kb');
+		</script>";
+      return false;
+   }
+
+   $namaFileBaru = $_POST['judul']  . "_" . uniqid() . "." . $ekstensiGambar;
+
+   $path = "images/" . $_POST['judul'];
+   if (file_exists($path)) {
+      move_uploaded_file($tmpName, 'images/' . $_POST['judul'] . "/" . $namaFileBaru);
+   } else {
+      mkdir($path, 0777, true);
+      move_uploaded_file($tmpName, 'images/' . $_POST['judul'] . "/" . $namaFileBaru);
+   }
+
+   return $namaFileBaru;
+}
+
+function delete($id)
+{
+   global $conn;
+   $query = "DELETE FROM buku WHERE id = $id`;";
+   mysqli_query($conn, $query);
+
+   return mysqli_affected_rows($conn);
+}
