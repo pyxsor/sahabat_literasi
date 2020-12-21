@@ -52,13 +52,24 @@ if (isset($_POST["login"])) {
 
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
-   <title>login</title>
+   <title>Halaman Login</title>
+   <!-- Meta Tag untuk Bootstrap & PHP -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstraps File -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+   <!-- CSS File -->
+   <link rel="stylesheet" href="css/login.css">
+
 </head>
 
 <body>
+<<<<<<< HEAD
    <h1>HALAMAN LOGIN</h1>
 
    <div id="form">
@@ -84,6 +95,46 @@ if (isset($_POST["login"])) {
       <?php endif; ?>
 
    </div>
+=======
+   <!-- jQuery + Bootstraps Bundle -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+   <script src="js/font-awesome.min.js"></script>
+
+   <?php if (isset($error)) : ?>
+      <div class="alert alert-danger" role="alert">
+         Username / Password Anda Salah, Silahkan Coba Lagi!
+      </div>
+   <?php endif; ?>
+
+   <div class="container">
+      <div class="row d-flex justify-content-center">
+         <div class="col">
+         </div>
+         <div class="col-md pt-5 mt-5">
+            <div class="login-box align-self-center mt-5">
+               <h3 class="login-header"><i class="fas fa-user"></i> Login</h3>
+               <div id="form">
+                  <form action="" method="POST">
+                     <div class="form-group">
+                        <label for="inputUsername">Username</label>
+                        <input placeholder="Masukkan Username Anda" type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp">
+                     </div>
+                     <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input placeholder="Masukkan Password Anda" type="password" class="form-control" name="password" id="password">
+                     </div>
+                     <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" name="remember" id="remember">
+                        <label class="form-check-label" for="remember">Ingat Aku</label>
+                     </div>
+                     <button type="submit" name="login" class="btn btn-success w-100 mb-3">Submit</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+>>>>>>> 0ef41b20d5e5d82ba7211c192579d2d4e9f5bf4b
 </body>
 
 </html>
