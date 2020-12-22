@@ -44,7 +44,7 @@ Status TO-DO List
 - [ ] Desain CRUD System / Dashboard
 - [ ] Fitur Pencarian dan Sort
 - [ ] Rak Kita (Pengunjung dapat mencari buku, tidak pakai login. Hanya menampilkan detail buku apabila ketemu)
-- [ ] Database nya tolong segera di fix, ini masih user saja
+- [x] Database nya tolong segera di fix, ini masih user saja
 - [ ] More is Coming!
 - [x] Rebahan!
 - [ ] REBAHANNNNN!!!!!!
