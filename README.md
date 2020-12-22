@@ -37,11 +37,16 @@ Status TO-DO List
 - [x] Project Proposal
 - [x] Prototype Design (Image, DB, Features, Limitation)
 - [x] Confirm Project Build Start
-- [ ] Build Proper Index
+- [ ] Build Proper Index (OTW Handie)
 - [x] Build Login System
 - [x] Desain Login System
-- [ ] Build CRUD System
+- [x] Build CRUD System
+- [ ] Desain CRUD System / Dashboard
+- [ ] Fitur Pencarian dan Sort
+- [ ] Rak Kita (Pengunjung dapat mencari buku, tidak pakai login. Hanya menampilkan detail buku apabila ketemu)
+- [ ] Database nya tolong segera di fix, ini masih user saja
 - [ ] More is Coming!
 - [x] Rebahan!
+- [ ] REBAHANNNNN!!!!!!
 
 <p align="center"> Tuntaskan dan Semangat Bagi Kita Semua! </p>

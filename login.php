@@ -108,7 +108,6 @@ if (isset($_POST["login"])) {
             </div>
          </div>
       </div>
-      >>>>>>> 0ef41b20d5e5d82ba7211c192579d2d4e9f5bf4b
 </body>
 
 </html>
