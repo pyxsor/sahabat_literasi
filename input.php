@@ -17,14 +17,14 @@ if (isset($_POST["submit"])) {
       echo "
 				<script>
 					alert('data berhasil ditambahkan');
-					document.location.href = 'index.php';
+					document.location.href = 'read.php';
 				</script>
 			";
    } else {
       echo "
 				<script>
 					alert('data gagal ditambahkan');
-					document.location.href = 'index.php';
+					document.location.href = 'input.php';
 				</script>
 			";
    }
@@ -81,10 +81,9 @@ if (isset($_POST["submit"])) {
             <td align="center">:</td>
             <td>
                <select name="lokasi" id="lokasi">
-                  <option value="moling-1">MOLING-1</option>
-                  <option value="moling-2">MOLING-2</option>
-                  <option value="moling-3">MOLING-3</option>
-                  <option value="moling-4">MOLING-4</option>
+                  <option value="MOLING-1">MOLING-1</option>
+                  <option value="MOLING-2">MOLING-2</option>
+                  <option value="MOLING-3">MOLING-3</option>
                </select>
             </td>
             </td>
@@ -95,8 +94,8 @@ if (isset($_POST["submit"])) {
             <td align="center">:</td>
             <td>
                <select name="status" id="status">
-                  <option value="tersedia">TERSEDIA</option>
-                  <option value="dipinjam">DIPINJAM</option>
+                  <option value="Tersedia">TERSEDIA</option>
+                  <option value="Dipinjam">DIPINJAM</option>
                </select>
             </td>
             </td>

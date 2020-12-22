@@ -128,8 +128,39 @@ function upload()
 function delete($id)
 {
    global $conn;
-   $query = "DELETE FROM buku WHERE id = $id`;";
+   $query = "DELETE FROM buku WHERE id = $id;";
    mysqli_query($conn, $query);
 
+   return mysqli_affected_rows($conn);
+}
+
+function update($data)
+{
+   global $conn;
+   $key = $data["id"];
+
+   $id = htmlspecialchars($data["id"]);
+   $judul = htmlspecialchars($data["judul"]);
+   $penulis = htmlspecialchars($data["penulis"]);
+   $tahun = htmlspecialchars($data["tahun"]);
+   $penerbit = htmlspecialchars($data["penerbit"]);
+   $lokasi = htmlspecialchars($data["lokasi"]);
+   $status = htmlspecialchars($data["status"]);
+   $coverLama = htmlspecialchars($data["coverLama"]);
+
+   var_dump($data);
+
+   if ($_FILES['cover']['error'] === 4) {
+      $cover = $coverLama;
+   } else {
+      $cover = upload();
+   }
+
+   $query = "UPDATE buku SET id = '$id', judul = '$judul' , penulis = '$penulis' , tahun = '$tahun' , penerbit = '$penerbit' , lokasi = '$lokasi' , status = '$status' , cover = '$cover' WHERE id = '$key';";
+
+   $result = mysqli_query($conn, $query);
+
+   echo mysqli_affected_rows($conn);
+   echo mysqli_error($conn);
    return mysqli_affected_rows($conn);
 }

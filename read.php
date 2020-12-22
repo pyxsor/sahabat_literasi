@@ -41,7 +41,7 @@ $buku = query("SELECT * FROM buku;");
             <td><?= $bk["status"]; ?></td>
             <td>
                <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
-               <a href="delete.php?id=<?= $bk["id"]; ?>">Delete</a>
+               <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
             </td>
          </tr>
       <?php $i++;
