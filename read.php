@@ -4,6 +4,12 @@ require "function.php";
 global $conn;
 $buku = query("SELECT * FROM buku;");
 
+if (isset($_POST["submitcari"])) {
+   $buku = search($_POST["search"]);
+} else {
+   echo mysqli_error($conn);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +22,20 @@ $buku = query("SELECT * FROM buku;");
 </head>
 
 <body>
+
+   <form action="" method="post">
+      <table border="0px" cellspacing="0px" cellpadding="4px">
+         <tr>
+            <td><input type="text" name="search" size="30px" autofocus placeholder="Cari Buku" autocomplete="off" id="search"></td>
+            <td>
+               <button type="submit" name="submitcari" id="submitcari">Cari Buku</button>
+            </td>
+         </tr>
+      </table>
+      <br>
+
+   </form>
+
    <table border="1px" cellpadding="6px">
       <tr>
          <th>NO</th>

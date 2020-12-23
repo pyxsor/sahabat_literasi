@@ -13,5 +13,6 @@ CREATE TABLE buku(
 	penerbit VARCHAR(80), 
 	lokasi VARCHAR(100), 
 	status VARCHAR(20), 
+	cover VARCHAR,
 	PRIMARY KEY(id) 
 );

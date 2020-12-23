@@ -163,3 +163,14 @@ function update($data)
    echo mysqli_error($conn);
    return mysqli_affected_rows($conn);
 }
+
+function search($cari)
+{
+   $query = "SELECT * FROM buku WHERE id LIKE '%$cari%' OR 
+		judul LIKE '%$cari%' OR
+		penulis LIKE '%$cari%' OR
+		tahun LIKE '%$cari%' OR
+      penerbit LIKE '%$cari%'";
+
+   return query($query);
+}
