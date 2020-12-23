@@ -25,7 +25,6 @@ function registrasi($data)
 
    $result = mysqli_query($conn, "SELECT username FROM user WHERE username= '$username'");
    $row = mysqli_fetch_assoc($result);
-   var_dump($row);
 
    if (mysqli_fetch_assoc($result)) {
       echo "<script>
