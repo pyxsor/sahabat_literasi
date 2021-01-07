@@ -21,6 +21,7 @@ if (isset($_POST["submit"])) {
       echo "<br> Error : " . mysqli_error($conn);
    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +90,7 @@ if (isset($_POST["submit"])) {
             <td>
                <select name="status" id="status" required value="<?= $buku["status"]; ?>">
                   <option value="Tersedia">TERSEDIA</option>
-                  <option value="Dipinjam">DIPINJAM</option>
+                  <option value="Dipinjam" name="dipinjam">DIPINJAM</option>
                </select>
             </td>
             </td>
@@ -111,6 +112,7 @@ if (isset($_POST["submit"])) {
          </tr>
       </table>
    </form>
+
 </body>
 
 </html>

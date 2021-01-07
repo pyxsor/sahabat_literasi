@@ -174,3 +174,54 @@ function search($cari)
 
    return query($query);
 }
+
+function input_pinjam($data)
+{
+   global $conn;
+   $id_pinjam = htmlspecialchars($data["id_pinjam"]);
+   $id_buku = htmlspecialchars($data["id_buku"]);
+   $nama_peminjam = htmlspecialchars($data["nama_peminjam"]);
+   $alamat_peminjam = htmlspecialchars($data["alamat_peminjam"]);
+   $notelp_peminjam = htmlspecialchars($data["notelp_peminjam"]);
+   $tanggal_pinjam = htmlspecialchars($data["tanggal_pinjam"]);
+   $tanggal_kembali = htmlspecialchars($data["tanggal_kembali"]);
+   $status_peminjaman = "Belum Kembali";
+   $status = htmlspecialchars($data["status"]);
+
+   if ($status == 'Dipinjam') {
+      echo "
+      <script> 
+         alert('Buku masih dipinjam'); 
+         document.location.href='read.php';
+      </script>";
+      return false;
+   } else {
+      $status = 'Dipinjam';
+   }
+
+   $query = "INSERT INTO peminjaman VALUES ('$id_pinjam','$id_buku','$nama_peminjam','$alamat_peminjam','$notelp_peminjam','$tanggal_pinjam','$tanggal_kembali', '$status_peminjaman');";
+   mysqli_query($conn, $query);
+
+   $query = "UPDATE buku SET status = '$status' WHERE id = '$id_buku';";
+   mysqli_query($conn, $query);
+
+   return mysqli_affected_rows($conn);
+}
+
+function dikembalikan($data)
+{
+   global $conn;
+   $id_pinjam = htmlspecialchars($data["id_pinjam"]);
+   $id_buku = htmlspecialchars($data["id_buku"]);
+   $status = 'Tersedia';
+   $status_peminjaman = 'Sudah Kembali';
+
+   $query = "UPDATE buku SET status = '$status' WHERE id = '$id_buku';";
+   mysqli_query($conn, $query);
+
+   $query = "UPDATE peminjaman SET status_peminjaman = '$status_peminjaman' WHERE id_pinjam = '$id_pinjam';";
+   mysqli_query($conn, $query);
+
+   echo mysqli_error($conn);
+   return mysqli_affected_rows($conn);
+}

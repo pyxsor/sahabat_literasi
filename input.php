@@ -29,6 +29,8 @@ if (isset($_POST["submit"])) {
 			";
    }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +97,7 @@ if (isset($_POST["submit"])) {
             <td>
                <select name="status" id="status">
                   <option value="Tersedia">TERSEDIA</option>
-                  <option value="Dipinjam">DIPINJAM</option>
+                  <option value="Dipinjam" name="dipinjam">DIPINJAM</option>
                </select>
             </td>
             </td>
@@ -115,6 +117,8 @@ if (isset($_POST["submit"])) {
          </tr>
       </table>
    </form>
+
+
 </body>
 
 </html>

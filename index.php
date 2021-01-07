@@ -42,7 +42,7 @@ require "function.php";
                <div class="tombol mt-3 align-self-center ml-5 p-3">
                   <a class="btn btn-success ml-5" href="login.php" role="button">Login</a>
                   <a class="btn btn-success ml-5" href="lokasi.php" role="button">Lokasi</a>
-                  <a class="btn btn-success ml-5" href="rak_kita.php" role="button">Rak Kita</a>
+                  <a class="btn btn-success ml-5" href="read.php" role="button">Rak Kita</a>
                </div>
             </div>
          </div>
