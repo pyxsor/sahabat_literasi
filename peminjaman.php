@@ -59,6 +59,24 @@ if (isset($_POST["dikembalikan"])) {
 }
 
 
+if (isset($_POST["update_pengembalian"])) {
+   if (update_pengembalian($_POST) > 0) {
+      echo "
+            <script>
+               alert('Perpanjangan berhasil');
+               document.location.href = 'peminjaman.php';
+            </script>
+         ";
+   } else {
+      echo "
+				<script>
+					alert('Perpanjangan tidak berhasil');
+					document.location.href = 'peminjaman.php';
+				</script>
+			";
+   }
+}
+
 ?>
 
 
@@ -135,9 +153,37 @@ if (isset($_POST["dikembalikan"])) {
                <td><?= $pmj["notelp_peminjam"]; ?></td>
                <td><?= $pmj["tanggal_pinjam"]; ?></td>
                <td><?= $pmj["tanggal_kembali"]; ?></td>
-               <td><?= $pmj["status_peminjaman"]; ?></td>
+               <?php
+               $tanggal_kembali_timestamp = strtotime($pmj['tanggal_kembali']);
+               $tanggal_kembali = date('Y-m-d', $tanggal_kembali_timestamp);
+               $curdate = date('Y-m-d', time());
+               $hari_kelebihan = date('d', time()) - date('d', $tanggal_kembali_timestamp);
+               ?>
+               <?php if ($tanggal_kembali < $curdate) : ?>
+                  <td>Denda
+                     <p>Terlambat: <?= $hari_kelebihan ?> Hari </p>
+                     <p>Total Denda: Rp. <?= $hari_kelebihan * 3000 ?></p>
+                  </td>
+               <?php else : ?>
+                  <td><?= $pmj["status_peminjaman"]; ?> <p></p>
+                  </td>
+               <?php endif; ?>
                <td>
-                  <a class="dikembalikan" href="" data-id_buku="<?= $pmj['id'] ?>" data-status="<?= $pmj['status_peminjaman'] ?>">Dikembalikan</a>
+                  <?php if ($tanggal_kembali > $curdate) : ?>
+                     <form action="" method="post">
+                        <input type="hidden" name="id_pinjam" value="<?= $pmj["id_pinjam"]; ?>">
+                        <input type="hidden" name="id_buku" value="<?= $pmj["id_buku"]; ?>">
+                        <input type="hidden" name="tanggal_kembali" value="<?= $pmj["tanggal_kembali"]; ?>">
+                        <button type="submit" id="update_pengembalian" name="update_pengembalian">Perpanjangan</button>
+                     </form>
+                  <?php else : ?>
+                     <p>Dibayar boz dendae</p>
+                  <?php endif; ?>
+                  <form action="" method="post">
+                     <input type="hidden" name="id_pinjam" value="<?= $pmj["id_pinjam"]; ?>">
+                     <input type="hidden" name="id_buku" value="<?= $pmj["id_buku"]; ?>">
+                     <button type="submit" id="dikembalikan" name="dikembalikan">Kembali</button>
+                  </form>
                </td>
             </tr>
          <?php $i++;
@@ -157,8 +203,32 @@ if (isset($_POST["dikembalikan"])) {
                <td><?= $pmj["notelp_peminjam"]; ?></td>
                <td><?= $pmj["tanggal_pinjam"]; ?></td>
                <td><?= $pmj["tanggal_kembali"]; ?></td>
-               <td><?= $pmj["status_peminjaman"]; ?></td>
+               <?php
+               $tanggal_kembali_timestamp = strtotime($pmj['tanggal_kembali']);
+               $tanggal_kembali = date('Y-m-d', $tanggal_kembali_timestamp);
+               $curdate = date('Y-m-d', time());
+               $hari_kelebihan = date('d', time()) - date('d', $tanggal_kembali_timestamp);
+               ?>
+               <?php if ($tanggal_kembali < $curdate) : ?>
+                  <td>Denda
+                     <p>Terlambat: <?= $hari_kelebihan ?> Hari </p>
+                     <p>Total Denda: Rp. <?= $hari_kelebihan * 3000 ?></p>
+                  </td>
+               <?php else : ?>
+                  <td><?= $pmj["status_peminjaman"]; ?> <p></p>
+                  </td>
+               <?php endif; ?>
                <td>
+                  <?php if ($tanggal_kembali > $curdate) : ?>
+                     <form action="" method="post">
+                        <input type="hidden" name="id_pinjam" value="<?= $pmj["id_pinjam"]; ?>">
+                        <input type="hidden" name="id_buku" value="<?= $pmj["id_buku"]; ?>">
+                        <input type="hidden" name="tanggal_kembali" value="<?= $pmj["tanggal_kembali"]; ?>">
+                        <button type="submit" id="update_pengembalian" name="update_pengembalian">Perpanjangan</button>
+                     </form>
+                  <?php else : ?>
+                     <p>Dibayar boz dendae</p>
+                  <?php endif; ?>
                   <form action="" method="post">
                      <input type="hidden" name="id_pinjam" value="<?= $pmj["id_pinjam"]; ?>">
                      <input type="hidden" name="id_buku" value="<?= $pmj["id_buku"]; ?>">

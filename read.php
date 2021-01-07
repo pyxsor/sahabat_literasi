@@ -23,7 +23,7 @@ if (isset($_GET["moling"])) {
    echo mysqli_error($conn);
 }
 
-if( isset($_POST["submit_pinjam"]) ) { 
+if (isset($_POST["submit_pinjam"])) {
    if (input_pinjam($_POST) > 0) {
       echo "
             <script>
@@ -50,7 +50,7 @@ if( isset($_POST["submit_pinjam"]) ) {
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Lihat Buku</title>
-   
+
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
@@ -114,7 +114,7 @@ if( isset($_POST["submit_pinjam"]) ) {
                <td><?= $bk["lokasi"]; ?></td>
                <td><?= $bk["status"]; ?></td>
                <td>
-                  <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status']?>">Pinjam</a> |
+                  <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
                   <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
                   <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
                </td>
@@ -135,7 +135,7 @@ if( isset($_POST["submit_pinjam"]) ) {
                <td><?= $bk["lokasi"]; ?></td>
                <td><?= $bk["status"]; ?></td>
                <td>
-                  <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status']?>">Pinjam</a> |
+                  <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
                   <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
                   <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
                </td>
@@ -188,12 +188,12 @@ if( isset($_POST["submit_pinjam"]) ) {
 
                   <div class="form-group">
                      <label for="tanggal_pinjam">Tanggal Pinjam</label>
-                     <input type="date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam" placeholder="tanggal_pinjam">
+                     <input type="date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam" placeholder="tanggal_pinjam" value="<?= date("Y-m-d", time()); ?>" disabled>
                   </div>
 
                   <div class="form-group">
                      <label for="tanggal_kembali">Tanggal Kembali</label>
-                     <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" placeholder="tanggal_kembali">
+                     <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" placeholder="tanggal_kembali" value="<?= date("Y-m-d", time() + 3600 * 24 * 14); ?>">
                   </div>
 
                   <div class="modal-footer">
@@ -205,8 +205,8 @@ if( isset($_POST["submit_pinjam"]) ) {
          </div>
       </div>
    </div>
-      <!-- ------------------------ -->
-      
+   <!-- ------------------------ -->
+
    <script src="js/js/jquery-3.5.1.js"></script>
    <script src="js/js/jquery-3.5.1.min.js"></script>
    <script src="js/js/popper.min.js"></script>

@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Bangkok');
 
 $conn = mysqli_connect("localhost", "root", "", "sahabat_literasi");
 
@@ -183,8 +184,8 @@ function input_pinjam($data)
    $nama_peminjam = htmlspecialchars($data["nama_peminjam"]);
    $alamat_peminjam = htmlspecialchars($data["alamat_peminjam"]);
    $notelp_peminjam = htmlspecialchars($data["notelp_peminjam"]);
-   $tanggal_pinjam = htmlspecialchars($data["tanggal_pinjam"]);
-   $tanggal_kembali = htmlspecialchars($data["tanggal_kembali"]);
+   $tanggal_pinjam = date("Y-m-d", time());
+   $tanggal_kembali = date("Y-m-d", time() + 3600 * 24 * 14);
    $status_peminjaman = "Belum Kembali";
    $status = htmlspecialchars($data["status"]);
 
@@ -220,6 +221,22 @@ function dikembalikan($data)
    mysqli_query($conn, $query);
 
    $query = "UPDATE peminjaman SET status_peminjaman = '$status_peminjaman' WHERE id_pinjam = '$id_pinjam';";
+   mysqli_query($conn, $query);
+
+   echo mysqli_error($conn);
+   return mysqli_affected_rows($conn);
+}
+
+function update_pengembalian($data)
+{
+   global $conn;
+   $id_pinjam = htmlspecialchars($data["id_pinjam"]);
+   $id_buku = htmlspecialchars($data["id_buku"]);
+   $tanggal_kembali = htmlspecialchars($data["tanggal_kembali"]);
+   $tanggal_kembali_timestamp = strtotime($tanggal_kembali);
+   $tanggal_kembali = date("Y-m-d", $tanggal_kembali_timestamp + 3600 * 24 * 7);
+
+   $query = "UPDATE peminjaman SET tanggal_kembali = '$tanggal_kembali' WHERE id_pinjam = '$id_pinjam' && id_buku = '$id_buku';";
    mysqli_query($conn, $query);
 
    echo mysqli_error($conn);
