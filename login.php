@@ -40,7 +40,7 @@ if (isset($_POST["login"])) {
             setcookie('key', hash('sha256', $row['username']), time() + 60);
          }
 
-         header("Location: input.php");
+         header("Location: dashboard.php");
          exit;
       }
    }
