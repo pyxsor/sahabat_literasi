@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Des 2020 pada 04.58
+-- Waktu pembuatan: 09 Jan 2021 pada 15.16
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -44,9 +44,39 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`id`, `judul`, `penulis`, `tahun`, `penerbit`, `lokasi`, `status`, `cover`) VALUES
-(4, 'Hujan', 'Tereliye', '2005', 'Mizan', 'MOLING-1', 'Tersedia', 'Hujan_5fe1460b13014.png'),
-(6, 'Rindu', 'Tereliye', '2006', 'Mizan', 'MOLING-2', 'Tersedia', 'Rindu_5fe33cf691c32.jpg'),
-(7, 'Khadijah', 'Sibel Eraslan', '2000', 'Gramedia', 'MOLING-3', 'Tersedia', 'Khadijah_5fe369c16eb0b.jpg');
+(8, 'Dunia Sophie', 'Jostein Garder', '2000', 'Mizan', 'MOLING-2', 'Dipinjam', 'Dunia Sophie_5fed4fd6e2169.jpeg'),
+(9, 'Ayahku bukan Pembohong', 'Tereliye', '2001', 'Gramedia', 'MOLING-1', 'Dipinjam', 'Ayahku bukan Pembohong_5fed501cd82b5.jpeg'),
+(10, 'Rintik Sedu Kata', 'Tsana', '2017', 'Gramedia', 'MOLING-3', 'Tersedia', 'Rintik Sedu Kata_5fed5065808d7.jpeg'),
+(11, 'Jatuh dan Cinta', 'Boy Candra', '2006', 'Mizan', 'MOLING-1', 'Dipinjam', 'Jatuh dan Cinta_5fed50ce1192b.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `peminjaman`
+--
+
+CREATE TABLE `peminjaman` (
+  `id_pinjam` int(11) NOT NULL,
+  `id_buku` int(10) NOT NULL,
+  `nama_peminjam` varchar(50) NOT NULL,
+  `alamat_peminjam` varchar(100) NOT NULL,
+  `notelp_peminjam` varchar(20) NOT NULL,
+  `tanggal_pinjam` date NOT NULL,
+  `tanggal_kembali` date NOT NULL,
+  `status_peminjaman` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id_pinjam`, `id_buku`, `nama_peminjam`, `alamat_peminjam`, `notelp_peminjam`, `tanggal_pinjam`, `tanggal_kembali`, `status_peminjaman`) VALUES
+(1, 8, 'sadd', 'asdsad', 'adsad', '2021-01-07', '2021-01-21', 'Sudah Kembali'),
+(7, 9, 'awdawdawd', 'asdsad', 'adsad', '2021-01-21', '2021-01-30', 'Sudah Kembali'),
+(8, 10, 'awdawdawd', 'asdsad', 'adsad', '2021-01-20', '2021-01-23', 'Sudah Kembali'),
+(9, 11, 'sadd', 'asdsad', 'adsad', '2021-01-07', '2021-01-06', 'Belum Kembali'),
+(10, 9, '234', '234', '234', '2021-01-08', '1970-01-01', 'Belum Kembali'),
+(11, 8, 'sadd', 'asdsad', 'adsad', '2021-01-08', '2021-01-22', 'Belum Kembali');
 
 -- --------------------------------------------------------
 
@@ -83,6 +113,13 @@ ALTER TABLE `buku`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  ADD PRIMARY KEY (`id_pinjam`),
+  ADD KEY `id_buku` (`id_buku`);
+
+--
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -96,13 +133,29 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  ADD CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
