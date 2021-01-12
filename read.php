@@ -136,6 +136,48 @@ if (isset($_POST["submit_pinjam"])) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
+                        <div class="col-lg-6 grid-margin stretch-card">
+                            <form action="" method="post">
+                                <table border="0px" cellspacing="0px" cellpadding="0px">
+                                    <tr>
+                                        <td><input type="text" name="search" size="30px" autofocus placeholder="Cari Buku" autocomplete="off" id="search"></td>
+                                        <td>
+                                            <button type="submit" name="submitcari" id="submitcari" class="btn btn-primary btn-fw"> <i class="mdi mdi-magnify"></i>Cari Buku</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                            </form>
+                        </div>
+                        <div class="col-lg-6 grid-margin stretch-card">
+                            <div class="btn-group">
+                                <form action="" method="post">
+                                    <button type="button" class="btn btn-warning dropdown-toggle btn-fw" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Urutkan
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <li>
+                                                        <a class="dropdown-item" href="read.php">Semua Lokasi</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    </li>
+                                                    <li>
+                                                        <?php foreach ($moling_select as $data) : ?>
+                                                            <a class="dropdown-item" href="read.php?moling=<?= $data['lokasi']; ?>"><?= $data['lokasi'] ?></a>
+                                                        <?php endforeach; ?>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
