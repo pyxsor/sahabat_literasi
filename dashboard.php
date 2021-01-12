@@ -79,6 +79,9 @@ if (!isset($_SESSION['login'])) {
                                 <li class="nav-item">
                                     <a class="nav-link" href="read.php">Lihat Koleksi Buku</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="peminjaman.php">Lihat Peminjaman</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
