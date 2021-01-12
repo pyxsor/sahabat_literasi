@@ -44,9 +44,6 @@ if (!isset($_SESSION['login'])) {
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             </br>
-                            <a class="dropdown-item">
-                                Ganti Kata Sandi
-                            </a>
                             <a class="dropdown-item" href="logout.php">
                                 Keluar
                             </a>
@@ -93,9 +90,6 @@ if (!isset($_SESSION['login'])) {
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="belumjadi.php"> Lihat Akun </a>
-                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="registrasi.php"> Daftar Akun </a>
                                 </li>
