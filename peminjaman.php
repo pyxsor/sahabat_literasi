@@ -1,6 +1,12 @@
 <?php
 
 require "function.php";
+
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
 global $conn;
 $peminjaman = query("SELECT * FROM peminjaman, buku WHERE peminjaman.id_buku = buku.id;");
 $buku = query("SELECT * FROM buku;");
@@ -16,7 +22,7 @@ if (!isset($_GET['moling']) && isset($_POST["submitcari"])) {
       peminjaman.alamat_peminjam LIKE '%$cari%' OR
       peminjaman.notelp_peminjam LIKE '%$cari%' OR
       peminjaman.status_peminjaman LIKE '%$cari%')  
-      group by buku.lokasi asc");
+      ");
 } else {
     echo mysqli_error($conn);
 }
@@ -199,7 +205,7 @@ if (isset($_POST["update_pengembalian"])) {
                                             <tr>
                                                 <td>
                                                     <li>
-                                                        <a class="dropdown-item" href="read.php">Semua Lokasi</a>
+                                                        <a class="dropdown-item" href="peminjaman.php">Semua Lokasi</a>
                                                         <div class="dropdown-divider"></div>
                                                     </li>
                                                     <li>

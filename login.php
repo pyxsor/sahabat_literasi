@@ -106,6 +106,7 @@ if (isset($_POST["login"])) {
                   </form>
                </div>
             </div>
+            <a class="btn btn-primary btn-fw" w-40 mb-3" href="index.php">Back Home</a>
          </div>
       </div>
 </body>

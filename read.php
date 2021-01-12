@@ -72,15 +72,18 @@ if (isset($_POST["submit_pinjam"])) {
             <div class="navbar-menu-wrapper d-flex align-items-center">
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item dropdown d-none d-xl-inline-block">
-                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                            <span class="profile-text">Hello, Handie</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                            </br>
-                            <a class="dropdown-item" href="logout.php">
-                                Keluar
+                        <?php if (isset($_SESSION['login'])) : ?>
+                            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                <span class="profile-text">Hello, Handie</span>
                             </a>
-                        </div>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                                </br>
+                                <a class="dropdown-item" href="logout.php">
+                                    Keluar
+                                </a>
+                            </div>
+                        <?php else : ?>
+                        <?php endif; ?>
                     </li>
                 </ul>
             </div>
@@ -106,15 +109,21 @@ if (isset($_POST["submit_pinjam"])) {
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="input.php">Tambah Koleksi Buku</a>
-                                </li>
+                                <?php if (isset($_SESSION['login'])) : ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="input.php">Tambah Koleksi Buku</a>
+                                    </li>
+                                <?php else : ?>
+                                <?php endif; ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="read.php">Lihat Koleksi Buku</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="peminjaman.php">Lihat Peminjaman</a>
-                                </li>
+                                <?php if (isset($_SESSION['login'])) : ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="peminjaman.php">Lihat Peminjaman</a>
+                                    </li>
+                                <?php else : ?>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </li>
@@ -248,9 +257,12 @@ if (isset($_POST["submit_pinjam"])) {
                                                                 <?= $bk["status"]; ?>
                                                             </td>
                                                             <td>
-                                                                <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
-                                                                <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
-                                                                <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
+                                                                <?php if (isset($_SESSION['login'])) : ?>
+                                                                    <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
+                                                                    <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
+                                                                    <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
+                                                                <?php else : ?>
+                                                                <?php endif; ?>
                                                             </td>
                                                         </tr>
                                                     <?php $i++;
@@ -285,9 +297,12 @@ if (isset($_POST["submit_pinjam"])) {
                                                                 <?= $bk["status"]; ?>
                                                             </td>
                                                             <td>
-                                                                <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
-                                                                <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
-                                                                <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
+                                                                <?php if (isset($_SESSION['login'])) : ?>
+                                                                    <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
+                                                                    <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
+                                                                    <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
+                                                                <?php else : ?>
+                                                                <?php endif; ?>
                                                             </td>
                                                         </tr>
                                                     <?php $i++;
