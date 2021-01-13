@@ -7,6 +7,12 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
+$buku = query("SELECT COUNT(judul) as 'jumlahbuku' FROM buku;");
+$pinjam = query("SELECT COUNT(id_pinjam) as 'total_pinjam' FROM peminjaman WHERE status_peminjaman = 'Belum Kembali' ;");
+$member = query("SELECT COUNT(nama_peminjam) as 'jumlah_mem' FROM peminjaman;");
+
+$peminjaman = query("SELECT * FROM peminjaman;");
+
 ?>
 
 <!DOCTYPE html>
@@ -117,7 +123,9 @@ if (!isset($_SESSION['login'])) {
                                         <div class="float-right">
                                             <p class="mb-0 text-right">Total Koleksi</p>
                                             <div class="fluid-container">
-                                                <h3 class="font-weight-medium text-right mb-0">10 Buku</h3>
+                                                <?php foreach ($buku as $data) : ?>
+                                                    <h3 class="font-weight-medium text-right mb-0"><?= $data['jumlahbuku'] ?> Buku</h3>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +142,9 @@ if (!isset($_SESSION['login'])) {
                                         <div class="float-right">
                                             <p class="mb-0 text-right">Buku Terpinjam</p>
                                             <div class="fluid-container">
-                                                <h3 class="font-weight-medium text-right mb-0">1</h3>
+                                                <?php foreach ($pinjam as $data) : ?>
+                                                    <h3 class="font-weight-medium text-right mb-0"><?= $data['total_pinjam'] ?> Buku</h3>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -149,9 +159,22 @@ if (!isset($_SESSION['login'])) {
                                             <i class="mdi mdi-poll-box text-success icon-lg"></i>
                                         </div>
                                         <div class="float-right">
-                                            <p class="mb-0 text-right">Jumlah Pengunjung</p>
+                                            <?php $denda = [] ?>
+                                            <?php foreach ($peminjaman as $pmj) : ?>
+                                                <?php
+                                                $tanggal_kembali_timestamp = strtotime($pmj['tanggal_kembali']);
+                                                $tanggal_kembali = date('Y-m-d', $tanggal_kembali_timestamp);
+                                                $curdate = date('Y-m-d', time());
+
+                                                if ($tanggal_kembali < $curdate) {
+                                                    $hari_kelebihan = date('d', time()) - date('d', $tanggal_kembali_timestamp);
+                                                    $denda[] = $hari_kelebihan * 3000;
+                                                }
+                                                ?>
+                                            <?php endforeach; ?>
+                                            <p class="mb-0 text-right">Total Denda</p>
                                             <div class="fluid-container">
-                                                <h3 class="font-weight-medium text-right mb-0">90000</h3>
+                                                <h3 class="font-weight-medium text-right mb-0">Rp.<?= array_sum($denda); ?></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -168,7 +191,9 @@ if (!isset($_SESSION['login'])) {
                                         <div class="float-right">
                                             <p class="mb-0 text-right">Jumlah Member</p>
                                             <div class="fluid-container">
-                                                <h3 class="font-weight-medium text-right mb-0">246</h3>
+                                                <?php foreach ($member as $data1) : ?>
+                                                    <h3 class="font-weight-medium text-right mb-0"><?= $data1['jumlah_mem'] ?> Member</h3>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>
