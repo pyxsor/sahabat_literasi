@@ -153,17 +153,17 @@ if (isset($_POST["submit"])) {
                                         </div>
                                         <div class="form-group">
                                             <label>Lokasi</label>
-                                            <select class="form-control form-control-lg" id="lokasi" name="lokasi" required value="<?= $buku["lokasi"]; ?>">
-                                                <option value="MOLING-1">MOLING-1</option>
-                                                <option value="MOLING-2">MOLING-2</option>
-                                                <option value="MOLING-3">MOLING-3</option>
+                                            <select class="form-control form-control-lg" id="lokasi" name="lokasi">
+                                                <option value="MOLING-1" <?php echo $buku['lokasi'] == 'MOLING-1' ? 'selected="selected"' : '' ?>>MOLING-1</option>
+                                                <option value="MOLING-2" <?php echo $buku['lokasi'] == 'MOLING-2' ? 'selected="selected"' : '' ?>>MOLING-2</option>
+                                                <option value="MOLING-3" <?php echo $buku['lokasi'] == 'MOLING-3' ? 'selected="selected"' : '' ?>>MOLING-3</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <select class="form-control form-control-lg" id="status" name="status" required value="<?= $buku["status"]; ?>">
-                                                <option value="Tersedia" name="Tersedia">Tersedia</option>
-                                                <option value="Dipinjam" name="Dipinjam">Dipinjam</option>
+                                            <select class="form-control form-control-lg" id="status" name="status">
+                                                <option value="Tersedia" <?php echo $buku['status'] == 'Tersedia' ? 'selected="selected"' : '' ?>>Tersedia</option>
+                                                <option value="Dipinjam" <?php echo $buku['status'] == 'Dipinjam' ? 'selected="selected"' : '' ?>>Dipinjam</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
