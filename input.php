@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once "function.php";
+require "function.php";
 
 
-// if (!isset($_SESSION['login'])) {
-//     header("Location: index.php");
-//     exit;
-// }
+if (!isset($_SESSION["login"])) {
+    header("Location: index.php");
+    exit;
+}
 
 $conn = mysqli_connect("localhost", "root", "", "sahabat_literasi");
 
