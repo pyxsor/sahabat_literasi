@@ -1,11 +1,12 @@
 <?php
-
+session_start();
 require "function.php";
 
-// if (!isset($_SESSION['login'])) {
-//     header("Location: index.php");
-//     exit;
-// }
+
+if (!isset($_SESSION["login"])) {
+    header("Location: index.php");
+    exit;
+}
 
 global $conn;
 $peminjaman = query("SELECT * FROM peminjaman, buku WHERE peminjaman.id_buku = buku.id;");

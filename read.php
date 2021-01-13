@@ -1,14 +1,13 @@
 <?php
 
+session_start();
 require "function.php";
 
-// if (isset($_SESSION['login']) && $_SESSION['login'] = true) {
-//     header("Location: index.php");
-//     exit;
-// }
 
-// Aku tak record dulu yo, ini aku blm nemu solusinya. kok nek masuk read tetep gamau tampil peminjamane, pas tak debug pakek isset session e gak kebuat. tapi nek dashborad mau.
-// Saranku nek mau pakek templating ben ga bingung naruh2 sidebar di tiap page harus dikasii $_SESSION $_SESSION apala apala, jadi nek mau. langsung ae yang dikasi session yang satu sidebar.php njejeg dikasi session tapi bisa ditaruh dimana2. 
+if (!isset($_SESSION["login"])) {
+    header("Location: index.php");
+    exit;
+}
 
 global $conn;
 $buku = query("SELECT * FROM buku;");
