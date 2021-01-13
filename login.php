@@ -15,7 +15,7 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
    }
 }
 
-if (isset($_SESSION["login"])) {
+if (isset($_SESSION["login"]) && $_SESSION['login'] = true) {
    header("Location: dashboard.php");
    exit;
 }

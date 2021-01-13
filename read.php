@@ -1,6 +1,15 @@
 <?php
 
 require "function.php";
+
+// if (isset($_SESSION['login']) && $_SESSION['login'] = true) {
+//     header("Location: index.php");
+//     exit;
+// }
+
+// Aku tak record dulu yo, ini aku blm nemu solusinya. kok nek masuk read tetep gamau tampil peminjamane, pas tak debug pakek isset session e gak kebuat. tapi nek dashborad mau.
+// Saranku nek mau pakek templating ben ga bingung naruh2 sidebar di tiap page harus dikasii $_SESSION $_SESSION apala apala, jadi nek mau. langsung ae yang dikasi session yang satu sidebar.php njejeg dikasi session tapi bisa ditaruh dimana2. 
+
 global $conn;
 $buku = query("SELECT * FROM buku;");
 $moling_select = query("SELECT * FROM buku group by lokasi asc;");
@@ -71,20 +80,21 @@ if (isset($_POST["submit_pinjam"])) {
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
                 <ul class="navbar-nav navbar-nav-right">
+
                     <li class="nav-item dropdown d-none d-xl-inline-block">
-                        <?php if (isset($_SESSION['login'])) : ?>
-                            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                                <span class="profile-text">Hello, Handie</span>
+
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <span class="profile-text">Hello, Admin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            </br>
+                            <a class="dropdown-item" href="logout.php">
+                                Keluar
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                                </br>
-                                <a class="dropdown-item" href="logout.php">
-                                    Keluar
-                                </a>
-                            </div>
-                        <?php else : ?>
-                        <?php endif; ?>
+                        </div>
+
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -95,12 +105,14 @@ if (isset($_POST["submit_pinjam"])) {
             <!-- Start Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
+
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.php">
                             <i class="menu-icon mdi mdi-television"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-content-copy"></i>
@@ -109,21 +121,19 @@ if (isset($_POST["submit_pinjam"])) {
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <?php if (isset($_SESSION['login'])) : ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="input.php">Tambah Koleksi Buku</a>
-                                    </li>
-                                <?php else : ?>
-                                <?php endif; ?>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="input.php">Tambah Koleksi Buku</a>
+                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="read.php">Lihat Koleksi Buku</a>
                                 </li>
-                                <?php if (isset($_SESSION['login'])) : ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="peminjaman.php">Lihat Peminjaman</a>
-                                    </li>
-                                <?php else : ?>
-                                <?php endif; ?>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="peminjaman.php">Lihat Peminjaman</a>
+                                </li>
+
                             </ul>
                         </div>
                     </li>
@@ -257,12 +267,11 @@ if (isset($_POST["submit_pinjam"])) {
                                                                 <?= $bk["status"]; ?>
                                                             </td>
                                                             <td>
-                                                                <?php if (isset($_SESSION['login'])) : ?>
-                                                                    <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
-                                                                    <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
-                                                                    <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
-                                                                <?php else : ?>
-                                                                <?php endif; ?>
+
+                                                                <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
+                                                                <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
+                                                                <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
+
                                                             </td>
                                                         </tr>
                                                     <?php $i++;
@@ -297,12 +306,11 @@ if (isset($_POST["submit_pinjam"])) {
                                                                 <?= $bk["status"]; ?>
                                                             </td>
                                                             <td>
-                                                                <?php if (isset($_SESSION['login'])) : ?>
-                                                                    <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
-                                                                    <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
-                                                                    <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
-                                                                <?php else : ?>
-                                                                <?php endif; ?>
+
+                                                                <a class="pinjam" href="" data-toggle="modal" data-target="#formModal-input" data-id_buku="<?= $bk['id'] ?>" data-status="<?= $bk['status'] ?>">Pinjam</a> |
+                                                                <a href="update.php?id=<?= $bk["id"]; ?>">Update</a> |
+                                                                <a href="delete.php?id=<?= $bk["id"]; ?>" onclick="return confirm('yakin dihapus?');">Delete</a>
+
                                                             </td>
                                                         </tr>
                                                     <?php $i++;

@@ -3,7 +3,7 @@ session_start();
 require_once "function.php";
 
 if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -40,7 +40,7 @@ if (!isset($_SESSION['login'])) {
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item dropdown d-none d-xl-inline-block">
                         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                            <span class="profile-text">Hello, Handie</span>
+                            <span class="profile-text">Hello, Admin</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             </br>
