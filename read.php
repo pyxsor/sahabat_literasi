@@ -21,7 +21,7 @@ if (!isset($_GET['moling']) && isset($_POST["submitcari"])) {
 
 if (isset($_GET["moling"])) {
     $lokasi = $_GET['moling'];
-    $moling = query("SELECT * FROM buku WHERE lokasi = '$lokasi' group by lokasi asc");
+    $moling = query("SELECT * FROM buku WHERE lokasi = '$lokasi' ");
 
     if (isset($_POST["submitcari"])) {
         $judul = $_POST['search'];

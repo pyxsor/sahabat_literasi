@@ -11,7 +11,7 @@ if (!isset($_SESSION["login"])) {
 global $conn;
 $peminjaman = query("SELECT * FROM peminjaman, buku WHERE peminjaman.id_buku = buku.id;");
 $buku = query("SELECT * FROM buku;");
-$moling_select = query("SELECT * FROM peminjaman, buku group by buku.lokasi asc;");
+$moling_select = query("SELECT * FROM peminjaman, buku;");
 
 if (!isset($_GET['moling']) && isset($_POST["submitcari"])) {
     $cari = $_POST['cari'];
